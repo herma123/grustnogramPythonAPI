@@ -1,4 +1,4 @@
-import requests, random, json
+import requests, json
 
 class Client():
 
