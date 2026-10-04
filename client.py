@@ -20,7 +20,7 @@ class Client():
 
 
 
-	def registration(self, nickname: str, email: str, password: str) -> bytes:
+	def registration(self, nickname: str, email: str, password: str):
 
 		return requests.post("https://api.grustnogram.ru/users", 
 			data = {
@@ -31,7 +31,7 @@ class Client():
 			 })
 
 
-	def login(self, email: str, password: str) -> bytes:
+	def login(self, email: str, password: str):
 
 		return requests.post('https://api.grustnogram.ru/sessions?v=2', 
 			data = {
@@ -45,7 +45,7 @@ class Client():
 
 
 
-	def sendMessage(self, message = "", id_circle = 0, id_user = 0, reply_to = 0, my = 1, attachments = [], reactions = [], reply_msg = {}) -> bytes:
+	def sendMessage(self, message = "", id_circle = 0, id_user = 0, reply_to = 0, my = 1, attachments = [], reactions = [], reply_msg = {}):
 
 		return requests.post(f'https://msg.grustnogram.ru/circles/{id_circle}/messages', 
 			headers = {"access-token": self.token}, 
@@ -61,7 +61,7 @@ class Client():
 			})
 
 
-	def deleteMessage(self, message_id = 0) -> bytes:
+	def deleteMessage(self, message_id = 0):
 
 		return requests.delete(f"https://msg.grustnogram.ru/circles/message/{message_id}",
 			headers = {"access-token": self.token})
@@ -90,7 +90,7 @@ class Client():
 			headers = {"access-token": self.token}).json()
 
 
-	def editSelf(self, name: str, nickname: str, about: str, url: str) -> bytes:
+	def editSelf(self, name: str, nickname: str, about: str, url: str):
 
 		return requests.put(f"https://api.grustnogram.ru/users/self",
 			headers = {"access-token": self.token},
@@ -101,7 +101,8 @@ class Client():
 				"url"		: url
 			})
 
-	def editHand(self, hand_on = 1, hand_text = "example") -> bytes:
+
+	def editHand(self, hand_on = 1, hand_text = "example"):
 
 		return requests.put(f"https://api.grustnogram.ru/users/self",
 			headers = {"access-token": self.token},
@@ -111,13 +112,13 @@ class Client():
 			})
 
 
-	def follow(self, id_user = 0) -> bytes:
+	def follow(self, id_user = 0):
 
 		return requests.post(f"https://api.grustnogram.ru/users/{id_user}/follow",
 			headers = {"access-token": self.token})
 
 
-	def unfollow(self, id_user = 0) -> bytes:
+	def unfollow(self, id_user = 0):
 
 		return requests.delete(f"https://api.grustnogram.ru/users/{id_user}/follow",
 			headers = {"access-token": self.token})
@@ -167,7 +168,7 @@ class Client():
 			headers = {"access-token": self.token}).json()
 
 
-	def enjoyCircle(self, id_circle) -> bytes:
+	def enjoyCircle(self, id_circle):
 
 		return requests.post(f"https://api.grustnogram.ru/circles/{id_circle}/enjoy", 
 			headers = {"access-token": self.token},
@@ -176,7 +177,7 @@ class Client():
 			})
 
 
-	def leftCircle(self, id_circle) -> bytes:
+	def leftCircle(self, id_circle):
 
 		return requests.post(f"https://api.grustnogram.ru/circles/{id_circle}/left", 
 			headers = {"access-token": self.token},
@@ -185,7 +186,7 @@ class Client():
 			})
 
 
-	def createCircle(self, title = "", avatar = "", desc = "", nickname = "", request_desc = "", anon = 0, hide = False, can_write = 1, privacy = 0, url = "", tags = [], moment = 0) -> bytes:
+	def createCircle(self, title = "", avatar = "", desc = "", nickname = "", request_desc = "", anon = 0, hide = False, can_write = 1, privacy = 0, url = "", tags = [], moment = 0):
 		
 		return requests.post(f"https://api.grustnogram.ru/circles", 
 			headers = {"access-token": self.token},
@@ -205,7 +206,7 @@ class Client():
 			})
 
 
-	def editCircle(self, id_circle = 0, title = "", avatar = "", desc = "", nickname = "", request_desc = "", anon = 0, hide = False, can_write = 1, privacy = 0, url = "", tags = [], moment = 0) -> bytes:
+	def editCircle(self, id_circle = 0, title = "", avatar = "", desc = "", nickname = "", request_desc = "", anon = 0, hide = False, can_write = 1, privacy = 0, url = "", tags = [], moment = 0):
 
 		return requests.put(f"https://api.grustnogram.ru/circles/{id_circle}",
 			headers = {"access-token": self.token},
@@ -226,13 +227,13 @@ class Client():
 			})
 
 
-	def deleteMessagesFromCircle(self, id_circle) -> bytes:
+	def deleteMessagesFromCircle(self, id_circle):
 
 		return requests.delete(f"https://api.grustnogram.ru/circles/{id_circle}/messages",
 			headers = {"access-token": self.token})
 
 
-	def deleteCircle(self, id_circle) -> bytes:
+	def deleteCircle(self, id_circle):
 
 		return requests.delete(f"https://api.grustnogram.ru/circles/{id_circle}",
 			headers = {"access-token": self.token})
@@ -249,19 +250,19 @@ class Client():
 			headers = {"access-token": self.token}).json()
 
 
-	def likePost(self, id_post) -> bytes:
+	def likePost(self, id_post):
 
 		return requests.post(f"https://api.grustnogram.ru/posts/{id_post}/like",
 			headers = {"access-token": self.token})
 
 
-	def unlikePost(self, id_post) -> bytes:
+	def unlikePost(self, id_post):
 
 		return requests.delete(f"https://api.grustnogram.ru/posts/{id_post}/like",
 			headers = {"access-token": self.token})
 
 
-	def commentPost(self, id_post, comment = "", reply_to = 0, privated = 0, attachments = []) -> bytes:
+	def commentPost(self, id_post, comment = "", reply_to = 0, privated = 0, attachments = []):
 
 		return requests.post(f"https://api.grustnogram.ru/posts/{id_post}/comments",
 			headers = {"access-token": self.token},
@@ -273,7 +274,7 @@ class Client():
 			})
 
 
-	def deleteCommentPost(self, id_comment) -> bytes:
+	def deleteCommentPost(self, id_comment):
 
 		return requests.delete(f"https://api.grustnogram.ru/posts/comments/{id_comment}",
 			headers = {"access-token": self.token})
