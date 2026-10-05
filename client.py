@@ -314,7 +314,7 @@ class Client():
 
 
 	def repostPost(self, id_post, proxies = {}) -> dict:
-		return requests.post(f"https://api.grustnogram.ru/posts/{id_post}/repost"
+		return requests.post(f"https://api.grustnogram.ru/posts/{id_post}/repost",
 			headers = {"access-token": self.token},
 			proxies = proxies).json()
 
