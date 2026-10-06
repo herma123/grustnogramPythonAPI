@@ -280,7 +280,7 @@ class Client():
 			proxies = proxies).json()
 
 
-	def loadPost(self, _filter = 0, text = "", media = [""], id_circle = 0, circle_only = 0) -> dict:
+	def loadPost(self, _filter = 0, text = "", media = [""], id_circle = 0, circle_only = 0, proxies = {}) -> dict:
 
 		return requests.post("https://api.grustnogram.ru/posts",
 			headers = {"access-token": self.token},
@@ -293,7 +293,7 @@ class Client():
 			proxies = proxies).json()
 
 
-	def deletePost(self, id_post = 0):
+	def deletePost(self, id_post = 0, proxies = {}):
 		return requests.delete(f"https://api.grustnogram.ru/posts/{id_post}",
 			headers = {"access-token": self.token},
 			proxies = proxies).json()
