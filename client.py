@@ -293,7 +293,7 @@ class Client():
 			proxies = proxies).json()
 
 
-	def deletePost(self, id_post = 0, proxies = {}):
+	def deletePost(self, id_post = 0, proxies = {}) -> dict:
 		return requests.delete(f"https://api.grustnogram.ru/posts/{id_post}",
 			headers = {"access-token": self.token},
 			proxies = proxies).json()
