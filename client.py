@@ -268,7 +268,7 @@ class Client():
 
 	def getPost(self, url, proxies = {}) -> dict:
 
-		return requests.get(f"https://api.grustnogram.ru/p/{url.split("https://grustnogram.ru/p/")[1]}?url={url.split("https://grustnogram.ru/p/")[1]}",
+		return requests.get(f"https://api.grustnogram.ru/p/{url.split('https://grustnogram.ru/p/')[1]}?url={url.split('https://grustnogram.ru/p/')[1]}",
 			headers = {"access-token": self.token},
 			proxies = proxies).json()
 
